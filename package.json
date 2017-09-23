@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev":
-      "tsc && concurrently \"tsc --watch\" \"nodemon --watch server.js server.js -p $PORT\"",
-    "start": "NODE_ENV=production node server.js",
+      "tsc && concurrently \"tsc --watch\" \"nodemon --watch server/**/*.js server -p $PORT\"",
+    "start": "NODE_ENV=production node server",
     "build": "tsc && next build"
   },
   "dependencies": {
