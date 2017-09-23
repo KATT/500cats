@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev":
-      "tsc && concurrently \"tsc --watch\" \"nodemon --watch server.js server.js -p $PORT\""
+      "tsc && concurrently \"tsc --watch\" \"nodemon --watch server.js server.js -p $PORT\"",
+    "start": "NODE_ENV=production node server.js",
+    "build": "tsc && next build"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
