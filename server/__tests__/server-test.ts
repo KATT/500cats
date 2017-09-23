@@ -6,3 +6,9 @@ it('responds to /api/cat/speak', async () => {
 
   expect(res.text).toBe('meow');
 });
+
+it('GET /api/cats', async () => {
+  const res = await req(server).get('/api/cats');
+
+  expect(res.status).toBe(200);
+});
