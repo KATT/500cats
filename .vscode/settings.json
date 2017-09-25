@@ -2,6 +2,9 @@
   // Place your settings in this file to overwrite default and user settings.
   "editor.formatOnSave": true,
   "prettier.eslintIntegration": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": true,
   "files.exclude": {
     "**/*.js": true
   }
