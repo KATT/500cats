@@ -10,6 +10,7 @@ export default ({ children, title = '500 cats' }) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <style jsx global>{`
+      html,
       body {
         font-family: monospace;
       }

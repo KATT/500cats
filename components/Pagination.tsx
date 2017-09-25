@@ -23,12 +23,31 @@ const PaginationItem = ({ name, text, cursor }: PaginationItemProps) => {
 
 export default ({ nextCursor, prevCursor, total }: PaginationProps) => (
   <div className="pagination">
-    <PaginationItem
-      name="before"
-      cursor={prevCursor}
-      text="<< Previous Page"
-    />{' '}
-    | Total items: {total} |{' '}
-    <PaginationItem name="after" cursor={nextCursor} text="Next Page >>" />
+    <span>
+      <PaginationItem
+        name="before"
+        cursor={prevCursor}
+        text="<< Previous Page"
+      />
+    </span>
+    <span className="middle">Total items: {total}</span>
+    <span className="right">
+      <PaginationItem name="after" cursor={nextCursor} text="Next Page >>" />
+    </span>
+    <style jsx>{`
+      .pagination {
+        display: flex;
+      }
+      span {
+        display: block;
+        flex: 1;
+      }
+      .middle {
+        text-align: center;
+      }
+      .right {
+        text-align: right;
+      }
+    `}</style>
   </div>
 );

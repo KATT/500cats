@@ -18,7 +18,7 @@ const s3 = new S3({
   region: S3_REGION,
 });
 // TODO: not very nice
-const MAX_RESULTS_LIMIT = 2;
+const MAX_RESULTS_LIMIT = 10;
 
 sequelize.sync();
 
