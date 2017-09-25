@@ -20,8 +20,8 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
 
   render() {
     return (
-      <Layout>
-        <h1>{this.props.text} world</h1>
+      <Layout title="List cats">
+        <h1>List of cats</h1>
         <MyComponent />
       </Layout>
     );

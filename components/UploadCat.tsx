@@ -1,12 +1,17 @@
 import * as React from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 interface State {
   loading: boolean;
+  catCount: number;
 }
 
 export default class UploadCat extends React.Component<{}, State> {
-  state: State = { loading: false };
+  state: State = {
+    loading: false,
+    catCount: 0,
+  };
   handleSubmit = async (file: File) => {
     const formData = new FormData();
 
@@ -20,9 +25,12 @@ export default class UploadCat extends React.Component<{}, State> {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log('yay');
+
+      this.setState(({ catCount }) => ({
+        catCount: catCount + 1,
+      }));
     } catch (e) {
-      console.log('nay');
+      // TODO: error handling
     }
 
     this.setState({ loading: false });
@@ -36,15 +44,27 @@ export default class UploadCat extends React.Component<{}, State> {
   };
 
   render() {
-    const { loading } = this.state;
+    const { loading, catCount } = this.state;
 
     return (
-      <input
-        type="file"
-        accept="image/png, image/jpeg"
-        onChange={this.handleImageChange}
-        disabled={loading}
-      />
+      <div>
+        <p>
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={this.handleImageChange}
+            disabled={loading}
+          />
+        </p>
+        {catCount > 0 && (
+          <p>
+            Go view your added {catCount > 1 ? 'cats' : 'cat'} in{' '}
+            <Link href="/">
+              <a>List Cats</a>
+            </Link>!
+          </p>
+        )}
+      </div>
     );
   }
 }

@@ -9,7 +9,7 @@ interface AddCatPageProps {
 export default class AddCatPage extends React.Component<AddCatPageProps, {}> {
   render() {
     return (
-      <Layout>
+      <Layout title="Add cats">
         <h1>Let's add a cat</h1>
         <UploadCat />
       </Layout>
