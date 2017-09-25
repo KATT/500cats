@@ -2,7 +2,6 @@ import * as SequelizeStatic from 'sequelize';
 import { DataTypes, Sequelize, Instance } from 'sequelize';
 
 export interface CatAttributes {
-  caption: string;
   url: string;
 }
 
@@ -17,10 +16,6 @@ export default function(
   let Cat = sequelize.define<CatInstance, CatAttributes>(
     'Cat',
     {
-      caption: {
-        type: dataTypes.STRING,
-        allowNull: false,
-      },
       url: {
         type: dataTypes.TEXT,
         allowNull: false,
