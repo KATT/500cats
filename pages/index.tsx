@@ -1,28 +1,33 @@
 import * as React from 'react';
-import MyComponent from '../components/MyComponent';
-import Layout from '../components/Layout';
 import axios from 'axios';
 
+import Layout from '../components/Layout';
+import MyComponent from '../components/MyComponent';
+import Pagination from '../components/Pagination';
+
 interface IndexPageProps {
-  text: string;
+  data: any;
 }
 
 export default class IndexPage extends React.Component<IndexPageProps, {}> {
-  static async getInitialProps({ req }) {
+  static async getInitialProps({ query, req }) {
     const baseUrl = req ? `${req.protocol}://${req.headers.host}` : '';
 
-    const res = await axios.get(baseUrl + '/api/cat/speak');
+    const { data } = await axios.get(`${baseUrl}/api/cats`, { params: query });
 
-    const text = res.data;
-
-    return { text };
+    return { data };
   }
 
   render() {
+    const { data } = this.props;
+    // const nextCursor = data.pagination;
+    const { nextCursor, prevCursor } = data.pagination;
     return (
       <Layout title="List cats">
         <h1>List of cats</h1>
-        <MyComponent />
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+
+        <Pagination {...data.pagination} />
       </Layout>
     );
   }

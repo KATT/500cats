@@ -9,10 +9,10 @@ export interface SequelizeModels {
 }
 
 const {
-  PG_MAIN_DB = '500cats',
-  PG_MAIN_USER = 'postgres',
-  PG_MAIN_PASSWORD = '',
-  PG_MAIN_HOST = 'localhost',
+  PG_MAIN_DB,
+  PG_MAIN_USER,
+  PG_MAIN_PASSWORD,
+  PG_MAIN_HOST,
   SCAFFOLD,
   NODE_ENV,
 } = process.env;

@@ -18,13 +18,14 @@ const s3 = new S3({
   region: S3_REGION,
 });
 // TODO: not very nice
-const MAX_RESULTS_LIMIT = 10;
+const MAX_RESULTS_LIMIT = 2;
 
 sequelize.sync();
 
 const server = express();
 
 interface Pagination {
+  total: number;
   prevCursor?: string;
   nextCursor?: string;
 }
@@ -37,21 +38,33 @@ server.get('/api/cat/speak', (req, res) => {
   res.send('meow');
 });
 
+function assert(obj: Object, key: string, expect: string) {
+  const actual = typeof key;
+  if (obj.hasOwnProperty(key) && typeof key !== expect) {
+    throw new Error(`Expected ${key} to be a '${expect}' (actual ${actual})`);
+  }
+}
+
 server.get('/api/cats', async (req, res) => {
   const model = models.Cat;
-  const { rows, count } = await paginate({
+  assert(req.query, 'after', 'string');
+  assert(req.query, 'before', 'string');
+
+  const { before, after } = req.query;
+
+  const { rows, count, nextCursor, prevCursor } = await paginate({
     model,
     limit: MAX_RESULTS_LIMIT,
+    before,
+    after,
   });
-
-  // FIXME figure out cursors
-  let nextCursor, prevCursor;
 
   let envelope: APIEnvelope = {
     data: rows,
     pagination: {
-      nextCursor,
-      prevCursor,
+      nextCursor: nextCursor && String(nextCursor),
+      prevCursor: prevCursor && String(prevCursor),
+      total: count,
     },
   };
 
