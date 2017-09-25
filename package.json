@@ -2,7 +2,7 @@
   "name": "500cats",
   "version": "1.0.0",
   "scripts": {
-    "bootstrap": "createdb 500cats",
+    "bootstrap": ". local-env.sh && tsc && node server/bootstrap",
     "dev": ". local-env.sh && tsc && concurrently \"tsc --watch\" \"nodemon --watch 'server/**/*.js' --exec 'node server -p $PORT'\"",
     "start": "NODE_ENV=production node server",
     "build": "tsc && next build",

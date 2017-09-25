@@ -1,11 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as SequelizeStatic from 'sequelize';
-import { CatAttributes, CatInstance } from './Cat';
+import { CatModel } from './Cat';
 import { Sequelize } from 'sequelize';
 
 export interface SequelizeModels {
-  Cat: SequelizeStatic.Model<CatInstance, CatAttributes>;
+  Cat: CatModel;
 }
 
 const {
