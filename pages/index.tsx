@@ -1,5 +1,6 @@
 import * as React from 'react';
 import MyComponent from '../components/MyComponent';
+import Layout from '../components/Layout';
 import axios from 'axios';
 
 interface IndexPageProps {
@@ -19,10 +20,10 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
 
   render() {
     return (
-      <div>
+      <Layout>
         <h1>{this.props.text} world</h1>
         <MyComponent />
-      </div>
+      </Layout>
     );
   }
 }
