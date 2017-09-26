@@ -2,7 +2,6 @@ import * as React from 'react';
 import axios from 'axios';
 
 import Layout from '../components/Layout';
-import MyComponent from '../components/MyComponent';
 import Pagination from '../components/Pagination';
 import CatList from '../components/CatList';
 
