@@ -9,5 +9,6 @@
     "PG_MAIN_USER": "@pg_main_user",
     "PG_MAIN_DB": "@pg_main_db",
     "PG_MAIN_PASSWORD": "@pg_main_password"
-  }
+  },
+  "alias": ["500cats.kattcorp.co.uk", "500cats.kattcorp.com"]
 }
