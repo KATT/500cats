@@ -3,3 +3,5 @@ node_modules
 .next
 .DS_Store
 local-env.sh
+server/__bootstrap__/*
+!server/__bootstrap__/.gitkeep
