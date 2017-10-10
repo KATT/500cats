@@ -17,24 +17,37 @@ WE ARE LOADING..`;
 const Bar = ({ loading }: { loading: boolean }) => {
   return (
     <div>
-      <pre
-        dangerouslySetInnerHTML={{ __html: KATTCORP_LOGO }}
-        className={loading ? 'is-loading' : null}
-      />
+      <div className={`wrapper ${loading ? 'is-loading' : ''}`}>
+        <pre dangerouslySetInnerHTML={{ __html: KATTCORP_LOGO }} />
+      </div>
 
       <style jsx>{`
-        pre {
+        .wrapper {
           position: fixed;
-          right: 10px;
-          top: 10px;
-          padding: 0;
-          margin: 0;
+          right: 0px;
+          top: 0px;
           text-shadow: 1px 1px 1px white;
-
-          transform: translate(0, -200%);
+          transform: translateX(150%) translateY(-150%);
+          transition: transform 0.2s ease;
         }
-        pre.is-loading {
-          transform: translate(0, 0);
+        .wrapper.is-loading {
+          transform: translateX(0%) translateY(0%);
+        }
+        pre {
+          animation-duration: 0.3s;
+          animation-name: updown;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          padding: 0;
+          margin: 10px;
+        }
+        @keyframes updown {
+          from {
+            transform: translateY(0);
+          }
+          to {
+            transform: translateY(15px);
+          }
         }
       `}</style>
     </div>
