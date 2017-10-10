@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "bootstrap": ". local-env.sh && tsc && node server/bootstrap",
-    "dev": ". local-env.sh && tsc && concurrently \"tsc --watch\" \"nodemon --watch 'server/**/*.js' --exec 'node server -p $PORT'\"",
+    "dev":
+      ". local-env.sh && tsc && concurrently \"tsc --watch\" \"nodemon --watch 'server/**/*.js' --exec 'node server -p $PORT'\"",
     "start": "NODE_ENV=production node server",
     "build": "tsc && next build",
     "test": "tsc && jest",
@@ -38,16 +39,24 @@
     "typescript": "^2.5.3"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
     },
-    "testMatch": [
-      "**/__tests__/*.(ts|tsx)"
-    ]
+    "testMatch": ["**/__tests__/*.(ts|tsx)"]
+  },
+  "now": {
+    "env": {
+      "S3_ACCESS_KEY_ID": "@s3_access_key_id",
+      "S3_SECRET_ACCESS_KEY": "@s3_secret_access_key",
+      "S3_REGION": "@s3_region",
+      "S3_BUCKET": "@s3_bucket",
+
+      "PG_MAIN_HOST": "@pg_main_host",
+      "PG_MAIN_USER": "@pg_main_user",
+      "PG_MAIN_DB": "@pg_main_db",
+      "PG_MAIN_PASSWORD": "@pg_main_password"
+    },
+    "alias": ["500cats.kattcorp.co.uk", "500cats.kattcorp.com"]
   }
 }
