@@ -1,6 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import LoadingBar from './LoadingBar';
+
+import LoadingState, { RouterState } from './LoadingState';
 
 export default ({ children, title = '500 cats' }) => (
   <div className="wrapper">
@@ -15,6 +18,7 @@ export default ({ children, title = '500 cats' }) => (
         font-family: monospace;
       }
     `}</style>
+    <LoadingBar />
     <header>
       <nav>
         <Link href="/" prefetch>
