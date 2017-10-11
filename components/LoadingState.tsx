@@ -41,6 +41,6 @@ export default class LoadingState extends React.Component<Props, State> {
   }
 
   render() {
-    return <div>{this.props.children(this.state)}</div>;
+    return this.props.children(this.state);
   }
 }
