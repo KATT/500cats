@@ -18,7 +18,8 @@ function getDevicePixelRatio() {
   return ratio;
 }
 
-const IMGIX_URL = 'http://500cats.imgix.net/';
+// 🚧 FIXME - Move to env var
+const IMGIX_URL = 'http://501cats.imgix.net/';
 const CROP_MODE = 'fit=crop&crop=entropy&auto=format&lossless=true';
 
 function getImgIxUrl(url) {

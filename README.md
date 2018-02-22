@@ -1,5 +1,3 @@
-**😿 Cats won't render at the moment as the free 3 months trial on imgix ran out 😿**
-
 # 500 cats
 
 Just a stupid server-rendered React/TypeScript app. Demo at https://500cats.kattcorp.co.uk.
